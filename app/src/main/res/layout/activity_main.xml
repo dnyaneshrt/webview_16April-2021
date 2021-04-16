@@ -30,6 +30,7 @@
                android:layout_height="match_parent"
                android:layout_weight="0.9"
                android:layout_margin="3dp"
+               android:paddingLeft="5dp"
                />
            <ImageButton
                android:onClick="load"

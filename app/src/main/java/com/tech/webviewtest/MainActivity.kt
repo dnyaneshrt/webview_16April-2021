@@ -7,6 +7,7 @@ import android.view.View
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(){
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity(){
     var instagram = "https://www.instagram.com/"
     var crikcet = "https://www.cricbuzz.com/"
     var youtube = "https://www.youtube.com/"
+    var et_url=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +25,8 @@ class MainActivity : AppCompatActivity(){
 
 
         webview.loadUrl("https://github.com/dnyaneshrt")
+
+
 //step 3
         webview.settings.builtInZoomControls=true
         webview.settings.javaScriptEnabled=true
@@ -33,6 +37,7 @@ class MainActivity : AppCompatActivity(){
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 super.onPageStarted(view, url, favicon)
                 progressBar.visibility=View.VISIBLE
+                Toast.makeText(this@MainActivity,url,Toast.LENGTH_SHORT).show()
             }
 
             override fun onPageFinished(view: WebView?, url: String?) {
@@ -58,6 +63,8 @@ class MainActivity : AppCompatActivity(){
     fun load(view: View) {
        //step 1
         //webview.loadUrl("url") is used to load the url
+        et_url=et_search.text.toString()//get the url entered by user
+
         when(view.id)
         {
 
@@ -66,6 +73,11 @@ class MainActivity : AppCompatActivity(){
             R.id.btn_instagram->webview.loadUrl(instagram)
             R.id.btn_facebook->webview.loadUrl(facebook)
             R.id.btn_cricket->webview.loadUrl(crikcet)
+            R.id.btn_serach->
+            {
+
+                webview.loadUrl("https:\\${et_url}")
+            }
         }
 
     }
